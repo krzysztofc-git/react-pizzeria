@@ -1,3 +1,4 @@
+import React from 'react';
 import Main from "./pages/Main";
 import Reservation from "./pages/Reservation";
 import Status from "./pages/Status";

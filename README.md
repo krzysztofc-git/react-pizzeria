@@ -1,5 +1,8 @@
 My e-pizzeria project rewritten using Node and React JS
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/krzysztofc-git/react-pizzeria)
+👈 Run this app quickly in a web container in your browser
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

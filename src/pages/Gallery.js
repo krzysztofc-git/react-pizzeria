@@ -60,7 +60,7 @@ function Gallery() {
   }
   return (
     <>
-      <h1 className="text-danger text-center">Gallery page</h1>
+      <h1 className="text-danger text-center pt-2">Gallery page</h1>
       <GalleryCarousel />
     </>
   );

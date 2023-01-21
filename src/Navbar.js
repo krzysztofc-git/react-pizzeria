@@ -38,7 +38,64 @@ function Navbar(props) {
       props.set_page(<Gallery />);
       setPageName("gallery");
     }
-  
+
+    // function switchUser() {
+    //   setPageName("switchUserButton");
+    // }
+
+    function ChangeUserDropdown() {
+      return (
+        <>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Change User
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Client</a></li>
+              <li><a class="dropdown-item" href="#">Employee</a></li>
+            </ul>
+          </div>
+        </>
+      )
+    }
+    
+    function SwitchThemeButtonIcon() {
+      //const chosenTheme = localStorage.getItem('theme').getPreferredTheme;
+      let icon;
+      //if (chosenTheme === null || chosenTheme === undefined) {
+        icon = (<><i className="bi bi-circle-half" />AUTO</>);
+      //}
+      //let htmlElement = document.getElementsByTagName('html');
+      icon = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? (<><i className="bi bi-moon-stars-fill" /></>)
+      : (<><i className="bi bi-sun-fill" /></>);
+
+
+      //htmlElement.setAttribute('data-bs-theme', 'dark');
+      // use useRef hook with element with attribute ref={ref123}, import from React first
+
+      // window.matchMedia('(prefers-color-scheme: dark)').matches
+      // ? htmlElement.setAttribute('data-bs-theme', 'dark')
+      // : htmlElement.setAttribute('data-bs-theme', 'light');
+      
+    
+      return (
+        <>
+          {icon}
+        </>
+      );
+    }
+    
+    function SwitchThemeButton() {
+      return (
+        <>
+          <button className="btn btn-secondary" type="button">
+            Switch theme <SwitchThemeButtonIcon />
+          </button>
+        </>
+      );
+    }
+
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -78,6 +135,17 @@ function Navbar(props) {
                   <a {...linkAttributes['gallery']} onClick={goGallery}>
                     Gallery
                   </a>
+                </li>
+              </ul>
+              <ul className="navbar-nav">
+                <li className="btn nav-item">
+                  {/* <a {...linkAttributes['switchUserButton']} onClick={switchUser}>
+                    <ChangeUserDropdown />
+                  </a> */}
+                  <ChangeUserDropdown />
+                </li>
+                <li className="btn nav-item">
+                  <SwitchThemeButton />
                 </li>
               </ul>
             </div>

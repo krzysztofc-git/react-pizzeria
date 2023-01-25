@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function Navbar(props) {
     const [pageName, setPageName] = useState(props.page_name);
+    const [themeString, setThemeString] = useState("dark");
     const default_value = { className: 'nav-link', 'data-bs-toggle': 'collapse', 'data-bs-target': '.navbar-collapse.show'};
     let linkAttributes = {
       main: default_value,
@@ -38,7 +39,61 @@ function Navbar(props) {
       props.set_page(<Gallery />);
       setPageName("gallery");
     }
-  
+
+    // function switchUser() {
+    //   setPageName("switchUserButton");
+    // }
+
+    function ChangeUserDropdown() {
+      return (
+        <>
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Change User
+            </button>
+            <ul className="dropdown-menu">
+              <li><a className="dropdown-item" href="#">Client</a></li>
+              <li><a className="dropdown-item" href="#">Employee</a></li>
+            </ul>
+          </div>
+        </>
+      )
+    }
+    
+    function SwitchThemeButtonIcon() {
+      let icon;
+
+      icon = themeString === "dark"
+      ? (<><i className="bi bi-moon-stars-fill" /></>)
+      : (<><i className="bi bi-sun-fill" /></>);
+
+      return (
+        <>
+          {icon}
+        </>
+      );
+    }
+
+    function switchTheme() {
+      if(themeString === "dark") {
+        setThemeString('light')
+        props.set_theme('light')
+      } else {
+        setThemeString('dark');
+        props.set_theme('dark')
+      }
+    }
+    
+    function SwitchThemeButton() {
+      return (
+        <>
+          <button className="btn btn-secondary" type="button" onClick={switchTheme}>
+            Switch theme <SwitchThemeButtonIcon />
+          </button>
+        </>
+      );
+    }
+
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -78,6 +133,17 @@ function Navbar(props) {
                   <a {...linkAttributes['gallery']} onClick={goGallery}>
                     Gallery
                   </a>
+                </li>
+              </ul>
+              <ul className="navbar-nav">
+                <li className="btn nav-item">
+                  {/* <a {...linkAttributes['switchUserButton']} onClick={switchUser}>
+                    <ChangeUserDropdown />
+                  </a> */}
+                  <ChangeUserDropdown />
+                </li>
+                <li className="btn nav-item">
+                  <SwitchThemeButton />
                 </li>
               </ul>
             </div>

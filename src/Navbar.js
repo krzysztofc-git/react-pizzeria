@@ -54,6 +54,7 @@ function Navbar(props) {
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="#">Client</a></li>
               <li><a className="dropdown-item" href="#">Employee</a></li>
+
             </ul>
           </div>
         </>
@@ -73,7 +74,6 @@ function Navbar(props) {
         </>
       );
     }
-
     function switchTheme() {
       if(themeString === "dark") {
         setThemeString('light')
@@ -83,7 +83,7 @@ function Navbar(props) {
         props.set_theme('dark')
       }
     }
-    
+
     function SwitchThemeButton() {
       return (
         <>

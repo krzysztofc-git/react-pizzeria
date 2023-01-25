@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function Navbar(props) {
     const [pageName, setPageName] = useState(props.page_name);
+    const [themeString, setThemeString] = useState("dark");
     const default_value = { className: 'nav-link', 'data-bs-toggle': 'collapse', 'data-bs-target': '.navbar-collapse.show'};
     let linkAttributes = {
       main: default_value,
@@ -46,13 +47,14 @@ function Navbar(props) {
     function ChangeUserDropdown() {
       return (
         <>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Change User
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Client</a></li>
-              <li><a class="dropdown-item" href="#">Employee</a></li>
+            <ul className="dropdown-menu">
+              <li><a className="dropdown-item" href="#">Client</a></li>
+              <li><a className="dropdown-item" href="#">Employee</a></li>
+
             </ul>
           </div>
         </>
@@ -60,36 +62,32 @@ function Navbar(props) {
     }
     
     function SwitchThemeButtonIcon() {
-      //const chosenTheme = localStorage.getItem('theme').getPreferredTheme;
       let icon;
-      //if (chosenTheme === null || chosenTheme === undefined) {
-        icon = (<><i className="bi bi-circle-half" />AUTO</>);
-      //}
-      //let htmlElement = document.getElementsByTagName('html');
-      icon = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+      icon = themeString === "dark"
       ? (<><i className="bi bi-moon-stars-fill" /></>)
       : (<><i className="bi bi-sun-fill" /></>);
 
-
-      //htmlElement.setAttribute('data-bs-theme', 'dark');
-      // use useRef hook with element with attribute ref={ref123}, import from React first
-
-      // window.matchMedia('(prefers-color-scheme: dark)').matches
-      // ? htmlElement.setAttribute('data-bs-theme', 'dark')
-      // : htmlElement.setAttribute('data-bs-theme', 'light');
-      
-    
       return (
         <>
           {icon}
         </>
       );
     }
-    
+    function switchTheme() {
+      if(themeString === "dark") {
+        setThemeString('light')
+        props.set_theme('light')
+      } else {
+        setThemeString('dark');
+        props.set_theme('dark')
+      }
+    }
+
     function SwitchThemeButton() {
       return (
         <>
-          <button className="btn btn-secondary" type="button">
+          <button className="btn btn-secondary" type="button" onClick={switchTheme}>
             Switch theme <SwitchThemeButtonIcon />
           </button>
         </>

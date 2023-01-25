@@ -2,29 +2,30 @@ import React from 'react';
 import './App.css';
 import Main from './pages/Main';
 import Navbar from './Navbar';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 
 
 function App() {
+  //value about theme read from local browser storage - to implement
+  const themeStringFromStorage = "light";
+
   const [page, setPage] = useState(<Main />);
-  const [themeString, setThemeString] = useState("dark");
+  const [themeString, setThemeString] = useState(themeStringFromStorage);
 
-  const appContainerRef = useRef(null);
-
-  useEffect(() => {
-    setTheme(themeString);
-  });
+  // useEffect(() => {
+  //   setTheme(themeString);
+  // });
   
   function setTheme(themeString) {
-    appContainerRef.current.setAttribute('data-bs-theme', themeString);
+    document.querySelector("html").setAttribute('data-bs-theme', themeString);
   }
 
   return (
-    <div ref={appContainerRef}>
-      <Navbar page_name="main" set_page={setPage} set_theme={setTheme} />
+    <>
+      <Navbar page_name="main" set_page={setPage} set_theme={setTheme} theme_string={themeString} />
       {page}
-    </div>
+    </>
   );
 }
 

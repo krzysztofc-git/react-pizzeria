@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 function Navbar(props) {
     const [pageName, setPageName] = useState(props.page_name);
-    const [themeString, setThemeString] = useState("dark");
+    const [themeString, setThemeString] = useState(props.theme_string);
     const default_value = { className: 'nav-link', 'data-bs-toggle': 'collapse', 'data-bs-target': '.navbar-collapse.show'};
     let linkAttributes = {
       main: default_value,

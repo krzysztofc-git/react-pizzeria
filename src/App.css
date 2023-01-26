@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.carousel {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  height: 70%;
+  width: 100%;
+  bottom: 0px;
+  background: linear-gradient(180deg, transparent 30%, #000 130%);
+  z-index: 1;
+}
+
+.carousel-caption {
+  z-index: 2;
+} 
+
+.carousel-indicators {
+  z-index: 3;
+}
+
+[data-bs-theme=dark] .carousel-item::after {
+  background: linear-gradient(180deg, transparent 30%, #fff 130%);
+}
+
+[data-bs-theme=dark] .carousel-item h1 {
+  color: #000;
+}
+
+[data-bs-theme=dark] .carousel-item p {
+  font-weight:500;
+}

@@ -24,7 +24,9 @@ function App() {
   return (
     <>
       <Navbar page_name="main" set_page={setPage} set_theme={setTheme} theme_string={themeString} />
-      {page}
+      <div className='container-fluid'>
+        {page}
+      </div>
     </>
   );
 }

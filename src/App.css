@@ -71,3 +71,17 @@
 [data-bs-theme=dark] .carousel-item p {
   font-weight:500;
 }
+
+.nav-item.disabled {
+  border-color: #00000000;
+}
+
+.nav-item .btn-outline-secondary {
+  border-style: none;
+  background-color: #00000000;
+}
+
+.nav-item .btn-outline-secondary:hover {
+  border-style: none;
+  background-color: #6c757d;
+}

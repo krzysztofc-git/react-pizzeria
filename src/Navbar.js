@@ -48,7 +48,7 @@ function Navbar(props) {
       return (
         <>
           <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Change User
             </button>
             <ul className="dropdown-menu">
@@ -87,7 +87,7 @@ function Navbar(props) {
     function SwitchThemeButton() {
       return (
         <>
-          <button className="btn btn-secondary" type="button" onClick={switchTheme}>
+          <button className="btn btn-outline-secondary" type="button" onClick={switchTheme}>
             Switch theme <SwitchThemeButtonIcon />
           </button>
         </>
@@ -119,12 +119,12 @@ function Navbar(props) {
                     Main Page
                   </a>
                 </li>
-                <li className="btn nav-item">
+                <li className="btn nav-item disabled">
                   <a {...linkAttributes['reservation']} onClick={goReservation}>
                     Reserve
                   </a>
                 </li>
-                <li className="btn nav-item">
+                <li className="btn nav-item disabled">
                   <a {...linkAttributes['status']} onClick={goStatus}>
                     Check Order
                   </a>
@@ -136,7 +136,7 @@ function Navbar(props) {
                 </li>
               </ul>
               <ul className="navbar-nav">
-                <li className="btn nav-item">
+                <li className="btn nav-item disabled">
                   {/* <a {...linkAttributes['switchUserButton']} onClick={switchUser}>
                     <ChangeUserDropdown />
                   </a> */}

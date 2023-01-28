@@ -66,7 +66,9 @@ function Navbar(props) {
 
       icon = themeString === "dark"
       ? (<><i className="bi bi-moon-stars-fill" /></>)
-      : (<><i className="bi bi-sun-fill" /></>);
+      : themeString === "light"
+      ? (<><i className="bi bi-sun-fill" /></>)
+      : (<><i className="bi bi-circle-half" /></>);
 
       return (
         <>
@@ -75,12 +77,16 @@ function Navbar(props) {
       );
     }
     function switchTheme() {
-      if(themeString === "dark") {
+      if (themeString === "auto") {
+        setThemeString('dark')
+        props.auto_set_theme();
+        localStorage.setItem("themeString", "dark");
+      } else if(themeString === "dark") {
         setThemeString('light')
-        props.set_theme('light')
+        localStorage.setItem("themeString", "light");
       } else {
-        setThemeString('dark');
-        props.set_theme('dark')
+        setThemeString('auto');
+        localStorage.setItem("themeString", "auto");
       }
     }
 
@@ -93,6 +99,8 @@ function Navbar(props) {
         </>
       );
     }
+
+    props.auto_set_theme();
 
     return (
       <>

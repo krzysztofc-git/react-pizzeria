@@ -4,26 +4,38 @@ import Main from './pages/Main';
 import Navbar from './Navbar';
 import { useState } from 'react';
 
-
-
 function App() {
-  //value about theme read from local browser storage - to implement
-  const themeStringFromStorage = "light";
+  // using Web Storage API - setting value to auto if not exists yet
+  if (!localStorage.getItem("themeString")) {
+    localStorage.setItem("themeString", "auto");
+  }
+  const themeStringFromStorage = localStorage.getItem("themeString");
 
   const [page, setPage] = useState(<Main />);
-  const [themeString, setThemeString] = useState(themeStringFromStorage);
 
-  // useEffect(() => {
-  //   setTheme(themeString);
-  // });
-  
   function setTheme(themeString) {
     document.querySelector("html").setAttribute('data-bs-theme', themeString);
   }
 
+  function autoSetTheme() {
+    // get preferred by system value
+    if (localStorage.getItem("themeString") === "auto") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme("dark");
+      } else {
+        setTheme("light");
+      }
+    } else if (localStorage.getItem("themeString") === "dark") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }
+  autoSetTheme();
+
   return (
     <>
-      <Navbar page_name="main" set_page={setPage} set_theme={setTheme} theme_string={themeString} />
+      <Navbar page_name="main" set_page={setPage} theme_string={themeStringFromStorage} auto_set_theme={autoSetTheme} />
       <div className='container-fluid'>
         {page}
       </div>

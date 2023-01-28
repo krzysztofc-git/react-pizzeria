@@ -48,8 +48,8 @@ function Navbar(props) {
       return (
         <>
           <div className="dropdown">
-            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Change User
+            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Change User">
+              <i className="bi bi-person-fill" />
             </button>
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="#">Client</a></li>
@@ -87,8 +87,8 @@ function Navbar(props) {
     function SwitchThemeButton() {
       return (
         <>
-          <button className="btn btn-outline-secondary" type="button" onClick={switchTheme}>
-            Switch theme <SwitchThemeButtonIcon />
+          <button className="btn btn-outline-secondary" type="button" onClick={switchTheme} title="Switch theme">
+            <SwitchThemeButtonIcon />
           </button>
         </>
       );

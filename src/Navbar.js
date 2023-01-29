@@ -18,6 +18,8 @@ function Navbar(props) {
     linkAttributes[pageName] = {
       className: 'nav-link active',
       'aria-current': 'page',
+      'data-bs-toggle': 'collapse',
+      'data-bs-target': '.navbar-collapse.show'
     };
 
     function goMain() {
@@ -106,7 +108,7 @@ function Navbar(props) {
       <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid limit-and-center">
-            <button type="button" className="btn navbar-brand text-danger" onClick={goMain}>
+            <button type="button" className="btn navbar-brand text-danger" data-bs-toggle = "collapse" data-bs-target = ".navbar-collapse.show" onClick={goMain}>
               <i className="bi bi-pie-chart-fill" /> React Pizzeria
             </button>
             <button

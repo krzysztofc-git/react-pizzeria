@@ -105,7 +105,7 @@ function Navbar(props) {
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
+          <div className="container-fluid limit-and-center">
             <button type="button" className="btn navbar-brand text-danger" onClick={goMain}>
               <i className="bi bi-pie-chart-fill" /> React Pizzeria
             </button>

@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <Navbar page_name="main" set_page={setPage} theme_string={themeStringFromStorage} auto_set_theme={autoSetTheme} />
-      <div className='container-fluid'>
+      <div className="container-fluid limit-and-center">
         {page}
       </div>
     </>

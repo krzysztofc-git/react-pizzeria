@@ -72,6 +72,13 @@
   font-weight:500;
 }
 
+.carousel-item p {
+  position: inherit;
+  bottom: -33px;
+  left: 0px;
+  right: 0px;
+}
+
 .nav-item.disabled {
   border-color: #00000000;
 }
@@ -87,7 +94,7 @@
 }
 
 .limit-and-center{
-  max-width: 900px;
+  max-width: 1440px;
   margin: auto;
 }
 

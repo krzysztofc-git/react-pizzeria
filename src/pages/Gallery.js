@@ -28,25 +28,25 @@ function Gallery() {
       const items = [];
       for (let index = props.begin_index; index < props.list.length; index++) {
         items.push(
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to={String(index)} aria-label={"Slide".concat(" ",String(index+1))}></button>
+          <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to={String(index)} aria-label={"Slide".concat(" ",String(index+1))}></button>
         );
       }
       return <>{items}</>;
     }
 
     return (
-      <div className='row px-3 row-gap-5'>
+      <div className='row px-1 row-gap-5'>
         <div className='col py-1'>
-          <div id="carouselExampleCaptions" className="carousel slide limit-and-center">
+          <div id="carouselGallery" className="carousel slide limit-and-center">
             <div className="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
               <CarouselButtons list={listOfPizzas} begin_index={1} />
             </div>
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img src={listOfPizzas[0][1]} className="d-block w-100" alt={listOfPizzas[0][0]} />
                 <div className="carousel-caption">
-                  <p>Swipe left/right or use arrow icons to see more</p>
+                  <p>Swipe or use side arrows</p>
                   <h1>{listOfPizzas[0][0]}</h1>
                 </div>
               </div>
@@ -55,11 +55,11 @@ function Gallery() {
               
               
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselGallery" data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselGallery" data-bs-slide="next">
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>

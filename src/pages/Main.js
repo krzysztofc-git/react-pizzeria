@@ -3,7 +3,7 @@ function Main() {
     function MainIntroduction() {
       return(
         <>
-          <div className='row px-5 row-gap-5'>
+          <div className='row px-1 row-gap-5'>
             <div className='col-lg-8 col-sm-12'>
               <p className='fs-2 fw-bold'>New flavors</p>
               <p className='fs-3'>See what's new in e-pizzeria</p>

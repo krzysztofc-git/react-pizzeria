@@ -37,7 +37,7 @@ function Gallery() {
     return (
       <div className='row px-3 row-gap-5'>
         <div className='col py-1'>
-          <div id="carouselExampleCaptions" className="carousel slide" style={{'max-width': '720px', margin: 'auto'}}>
+          <div id="carouselExampleCaptions" className="carousel slide limit-and-center">
             <div className="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
               <CarouselButtons list={listOfPizzas} begin_index={1} />

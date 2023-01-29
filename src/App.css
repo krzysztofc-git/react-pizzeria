@@ -85,3 +85,13 @@
   border-style: none;
   background-color: #6c757d;
 }
+
+.limit-and-center{
+  max-width: 900px;
+  margin: auto;
+}
+
+.carousel.limit-and-center {
+  max-width: 720px;
+  margin: auto;
+}

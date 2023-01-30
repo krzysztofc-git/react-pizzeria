@@ -1,4 +1,5 @@
 import React from 'react';
+// import presentPageRef from '../Navbar';
 function Main() {
     function MainIntroduction() {
       return(
@@ -7,6 +8,7 @@ function Main() {
             <div className='col-lg-8 col-sm-12'>
               <p className='fs-2 fw-bold'>New flavors</p>
               <p className='fs-3'>See what's new in e-pizzeria</p>
+              {/* <a onClick={presentPageRef = "Gallery"}>Check products</a> */}
             </div>
             <div className='col text-center'>
               <img className="img-fluid" src="images/pizza_index.png" alt="Pizza box icon" />

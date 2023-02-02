@@ -3,6 +3,7 @@ import './App.css';
 import Main from './pages/Main';
 import Navbar from './Navbar';
 import { useState } from 'react';
+import { initFakeDatabase } from './fakeDatabase';
 
 function App() {
   // using Web Storage API - setting value to auto if not exists yet
@@ -32,6 +33,8 @@ function App() {
     }
   }
   autoSetTheme();
+  //dropFakeDatabase();
+  initFakeDatabase();
 
   return (
     <>
@@ -44,4 +47,3 @@ function App() {
 }
 
 export default App;
-

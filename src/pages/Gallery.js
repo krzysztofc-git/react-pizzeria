@@ -137,16 +137,18 @@ function Gallery() {
     return (
       <div className='col py-1'>
         <h2>Menu</h2>
-        <table className='table'>
-          <thead>
-          <tr>
-            <th scope='col'>Pizza name</th><th scope='col'>Ingredients</th><th scope='col'>Price of ingredients</th><th scope='col'>Standard</th>
-          </tr>
-          </thead>
-          <tbody className='table-group-divider'>
-            <TableRows />
-          </tbody>
-        </table>
+        <div className='table-responsive'>
+          <table className='table'>
+            <thead>
+            <tr>
+              <th scope='col'>Pizza name</th><th scope='col'>Ingredients</th><th scope='col'>Price of ingredients</th><th scope='col'>Standard</th>
+            </tr>
+            </thead>
+            <tbody className='table-group-divider'>
+              <TableRows />
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }

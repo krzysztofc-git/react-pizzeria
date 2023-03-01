@@ -138,7 +138,7 @@ function Navbar(props) {
                     Main Page
                   </a>
                 </li>
-                <li className="btn nav-item disabled">
+                <li className="btn nav-item">
                   <a {...linkAttributes['reservation']} onClick={goReservation}>
                     Reserve
                   </a>

@@ -25,9 +25,9 @@ function initFakeDatabase() {
   localStorage.getItem("dough_type") || localStorage.setItem("dough_type",JSON.stringify(dough_type));
 
   const dough_size = [
-    (1,"small",1),
-    (2,"medium",1.5),
-    (3,"large",2)
+    [1,"small",1],
+    [2,"medium",1.5],
+    [3,"large",2]
   ];
   localStorage.getItem("dough_size") || localStorage.setItem("dough_size",JSON.stringify(dough_size));
 

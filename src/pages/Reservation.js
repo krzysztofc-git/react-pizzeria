@@ -20,6 +20,26 @@ function Reservation() {
     ],
   };
 
+  function generateOrderID() {
+    // generating ID that does not exist in database
+    let isIDinDB = false;
+    const min = 100000; // can equal min
+    const max = 999999 + 1; // cannot equal but can be less than max
+    let id = -1;
+    const col = db("orders");
+    const listOfIDs = [];
+    for (let i = 0; i < col.length; i++) {
+      listOfIDs.push(Number.parseInt(col[i][5]));
+    }
+    do {
+      id = Math.random() * (max - min) + min;
+      id = Number.parseInt(id); // float -> int
+      isIDinDB = !listOfIDs.includes(id);
+    } while (!isIDinDB);
+
+    return id;
+  }
+
   function FormSelectPizza() {
     const col = queries.query1[1][0];
     const options = [];
@@ -61,7 +81,7 @@ function Reservation() {
     <>
       <h1 className="text-danger text-center pt-2">Reservation page</h1>
       <form method='post'>
-        <input type="hidden" name="id_order" value={123456} />
+        <input type="hidden" name="id_order" value={generateOrderID()} />
         <div className='row px-1 row-gap-5'>
           <div className='col-lg-6 col-sm-12'>
             <div className='mb-3'>
@@ -111,7 +131,7 @@ function Reservation() {
               </select>
             </div>
             <div className='d-grid'>
-            <button type="submit" className='btn btn-danger'>Reserve</button>
+              <button type="submit" className='btn btn-danger'>Reserve</button>
             </div>
           </div>
         </div>

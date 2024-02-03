@@ -2,12 +2,9 @@ My e-pizzeria project rewritten using Node and React JS
 
 ## Run online in IDE
 
-| Project links | Info | Version |
+| Project link | Info | Version |
 |-----|-----|-----|
-|⚡ [Open in StackBlitz](https://stackblitz.com/github/krzysztofc-git/react-pizzeria) | Run using a web container in your browser | Always latest build |
-|🗃️ [Open in CodeSandbox](https://codesandbox.io/s/github/krzysztofc-git/react-pizzeria)|The alternative container | Always latest build |
-|☁️ [Open in CodeSandbox (cloud)](https://codesandbox.io/p/sandbox/d96qc2) | Cloud version if none above works | Possibly outdated |
-|📱 [Open in CodeSandbox (website)](https://d96qc2-3000.preview.csb.app/) <br> ![](https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fd96qc2-3000.preview.csb.app%2F&size=100x100&margin=5) | Should work after visiting the link above <br><br> Can be viewed directly as website, without IDE | Possibly outdated |
+|🗃️ [Open in CodeSandbox](https://codesandbox.io/s/github/krzysztofc-git/react-pizzeria)| Run using a web container in your browser | Always latest build |
 
 # Getting Started with Create React App
 

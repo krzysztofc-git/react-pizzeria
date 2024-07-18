@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef } from 'react';
 import { getFakeDatabaseTable, dropFakeDatabase } from '../fakeDatabase';
 
 function Reservation() {
@@ -20,6 +20,7 @@ function Reservation() {
     ],
   };
 
+  const [orderID, setOrderID] = useState(null);
   function generateOrderID() {
     // generating ID that does not exist in database
     let isIDinDB = false;
@@ -40,6 +41,7 @@ function Reservation() {
     return id;
   }
 
+  const idPizzaRef = useRef(null);
   function FormSelectPizza() {
     const col = queries.query1[1][0];
     const options = [];
@@ -49,6 +51,7 @@ function Reservation() {
     return options;
   }
 
+  const idSizeRef = useRef(null);
   function FormSelectSize() {
     const col = queries.query2[1][0];
     const options = [];
@@ -58,6 +61,7 @@ function Reservation() {
     return options;
   }
 
+  const idDoughRef = useRef(null);
   function FormSelectDoughSize() {
     const col = queries.query3[1][0];
     const options = [];
@@ -67,6 +71,7 @@ function Reservation() {
     return options;
   }
 
+  const extrasRef = useRef(null);
   function FormSelectExtras() {
     const col = queries.query4[1][0];
     const options = [];
@@ -77,34 +82,58 @@ function Reservation() {
     return options;
   }
 
+
+  const tableNumRef = useRef(null);
+  const nameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const billNeededRef = useRef(null);
+  function handleSubmit(e) {
+    e.preventDefault();
+    //alert(e.target);
+    setOrderID(generateOrderID());
+    alert(`Your order has number ${orderID}, `
+      +`pizza ID ${idPizzaRef.current.value}, `
+      +`size ID ${idSizeRef.current.value} `
+      +`with dough size ID ${idDoughRef.current.value} `
+      // +`ingredients ID ${extrasRef.current.value}, `
+      +`ingredients IDs [${
+        Array.from(
+          e.target.elements["Extras"].selectedOptions
+        ).map(option => option.value).join(', ')
+      }], `
+      +`table number ${tableNumRef.current.value}, `
+      +`on name ${nameRef.current.value} ${lastNameRef.current.value} `
+      +`who ${billNeededRef.current.value ? "requires" : "doesn't require"} bill.`);
+  }
+
   return (
     <>
       <h1 className="text-danger text-center pt-2">Reservation page</h1>
-      <form method='post'>
-        <input type="hidden" name="id_order" value={generateOrderID()} />
+      <form method='post' onSubmit={handleSubmit}>
+        {/*<input type="hidden" name="id_order" value={generateOrderID()} />*/}
         <div className='row px-1 row-gap-5'>
           <div className='col-lg-6 col-sm-12'>
             <div className='mb-3'>
               <label htmlFor="Pizza" className='form-label'>Select pizza</label>
-              <select id="Pizza" className='form-select' name="id_pizza">
+              <select id="Pizza" className='form-select' name="id_pizza" ref={idPizzaRef}>
                 <FormSelectPizza />
               </select>
             </div>
             <div className='mb-3'>
               <label htmlFor="Size" className='form-label'>Select size</label>
-              <select id="Size" className='form-select' name="id_size" required>
+              <select id="Size" className='form-select' name="id_size" ref={idSizeRef} required>
                 <FormSelectSize />
               </select>
             </div>
             <div className='mb-3'>
               <label htmlFor="Dough_size" className='form-label'>Select dough size</label>
-              <select id="Dough_size" className='form-select' name="id_dough" required>
+              <select id="Dough_size" className='form-select' name="id_dough" ref={idDoughRef} required>
                 <FormSelectDoughSize />
               </select>
             </div>
             <div className='mb-3'>
               <label htmlFor="Extras" className='form-label'>Select Add-ons (Multi-Ingredient Selection (Hold Ctrl))</label>
-              <select id="Extras" className='form-select' name="extras[]" multiple>
+              <select id="Extras" className='form-select' name="extras[]" ref={extrasRef} multiple>
                 <FormSelectExtras />
               </select>
             </div>
@@ -112,20 +141,20 @@ function Reservation() {
           <div className='col-lg-6 col-sm-12'>
             <div className='mb-3'>
               <label htmlFor="Table_num" className='form-label'>Table number</label>
-              <input type="number" id="Table_num" className='form-control' name="table_num" required />
+              <input type="number" id="Table_num" className='form-control' name="table_num" ref={tableNumRef} required />
             </div>
 
             <div className='mb-3'>
-              <label htmlFor="Name" className='form-label'>Client's name</label>
-              <input type="text" id="Name" className='form-control' name="name" required />
+              <label htmlFor="Name" className='form-label'>Client&apos;s name</label>
+              <input type="text" id="Name" className='form-control' name="name" ref={nameRef} required />
             </div>
             <div className='mb-3'>
-              <label htmlFor="LastName" className='form-label'>Client's last name</label>
-              <input type="text" id="LastName" className='form-control' name="last_name" required />
+              <label htmlFor="LastName" className='form-label'>Client&apos;s last name</label>
+              <input type="text" id="LastName" className='form-control' name="last_name" ref={lastNameRef} required />
             </div>
             <div className='mb-3'>
               <label htmlFor="Bill_needed" className='form-label'>Do you need a bill?</label>
-              <select id="Bill_needed" className='form-select' name="bill_needed" required>
+              <select id="Bill_needed" className='form-select' name="bill_needed" ref={billNeededRef} required>
                 <option value={1}>Yes</option>
                 <option value={0}>No</option>
               </select>
@@ -142,7 +171,7 @@ function Reservation() {
         () => {
           dropFakeDatabase(); window.location.reload()
         }
-      }><i class="bi bi-arrow-clockwise" /></button>
+      }><i className="bi bi-arrow-clockwise" /></button>
     </>
   );
 }

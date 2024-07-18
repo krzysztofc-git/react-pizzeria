@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Main from './pages/Main';
+import Main from './pages/Main.jsx';
 import Navbar from './Navbar';
 import { useState } from 'react';
 import initFakeDatabase from './fakeDatabase';

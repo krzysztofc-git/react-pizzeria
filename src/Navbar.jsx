@@ -143,7 +143,7 @@ function Navbar(props) {
                     Reserve
                   </a>
                 </li>
-                <li className="btn nav-item disabled">
+                <li className="btn nav-item">
                   <a {...linkAttributes['status']} onClick={goStatus}>
                     Check Order
                   </a>

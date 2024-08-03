@@ -4,6 +4,7 @@ import Main from './pages/Main.jsx';
 import Navbar from './Navbar';
 import { useState } from 'react';
 import initFakeDatabase from './fakeDatabase';
+import { Outlet } from "react-router-dom";
 
 function App() {
   // using Web Storage API - setting value to auto if not exists yet
@@ -40,7 +41,7 @@ function App() {
     <>
       <Navbar page_name="main" set_page={setPage} theme_string={themeStringFromStorage} auto_set_theme={autoSetTheme} />
       <div className="container-fluid limit-and-center">
-        {page}
+        <Outlet />
       </div>
     </>
   );

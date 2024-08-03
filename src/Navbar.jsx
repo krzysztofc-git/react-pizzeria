@@ -5,9 +5,11 @@ import Status from "./pages/Status";
 import Gallery from "./pages/Gallery";
 import { useState } from 'react';
 //import { useState, useRef } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar(props) {
     const [pageName, setPageName] = useState(props.page_name);
+    const navigate = useNavigate();
     const [themeString, setThemeString] = useState(props.theme_string);
     // const presentPageRef = useRef(null);
     const default_value = { className: 'nav-link', 'data-bs-toggle': 'collapse', 'data-bs-target': '.navbar-collapse.show'};
@@ -25,22 +27,22 @@ function Navbar(props) {
     };
 
     function goMain() {
-      props.set_page(<Main />);
+      navigate("/");
       setPageName("main");
     }
   
     function goReservation() {
-      props.set_page(<Reservation />);
+      navigate("/reservation");
       setPageName("reservation");
     }
   
     function goStatus() {
-      props.set_page(<Status />);
+      navigate("/status");
       setPageName("status");
     }
   
     function goGallery() {
-      props.set_page(<Gallery />);
+      navigate("/gallery");
       setPageName("gallery");
     }
 
@@ -143,7 +145,7 @@ function Navbar(props) {
                     Reserve
                   </a>
                 </li>
-                <li className="btn nav-item disabled">
+                <li className="btn nav-item">
                   <a {...linkAttributes['status']} onClick={goStatus}>
                     Check Order
                   </a>

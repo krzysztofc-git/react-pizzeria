@@ -1,5 +1,3 @@
-import React from 'react';
-// import presentPageRef from '../Navbar';
 function Main() {
     function MainIntroduction() {
       return(

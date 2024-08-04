@@ -1,11 +1,5 @@
-import React from 'react';
-import Main from "./pages/Main";
-import Reservation from "./pages/Reservation";
-import Status from "./pages/Status";
-import Gallery from "./pages/Gallery";
 import { useState } from 'react';
-//import { useState, useRef } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Navbar(props) {
     const [pageName, setPageName] = useState(props.page_name);

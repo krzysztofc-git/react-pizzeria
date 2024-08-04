@@ -1,11 +1,13 @@
 import { getFakeDatabaseTable } from '../fakeDatabase';
+import PropTypes from "prop-types";
+
 function Gallery() {
   function GalleryCarousel() {
     const listOfPizzas = getFakeDatabaseTable("pizza_types");
 
-    function CarouselItems(props) {
+    function CarouselItems({begin_index, list}) {
       const items = [];
-      for (let index = props.begin_index; index < props.list.length; index++) {
+      for (let index = begin_index; index < list.length; index++) {
         items.push(
           <div className="carousel-item">
             <img src={listOfPizzas[index][2]} className="d-block w-100" alt={listOfPizzas[index][1]} />
@@ -18,9 +20,14 @@ function Gallery() {
       return <>{items}</>;
     }
 
-    function CarouselButtons(props) {
+    CarouselItems.propTypes = {
+      begin_index: PropTypes.number,
+      list: PropTypes.array
+    }
+
+    function CarouselButtons({begin_index, list}) {
       const items = [];
-      for (let index = props.begin_index; index < props.list.length; index++) {
+      for (let index = begin_index; index < list.length; index++) {
         items.push(
           <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to={String(index)} aria-label={"Slide".concat(" ",String(index+1))}></button>
         );
@@ -28,7 +35,10 @@ function Gallery() {
       return <>{items}</>;
     }
 
-    
+    CarouselButtons.propTypes = {
+      begin_index: PropTypes.number,
+      list: PropTypes.array
+    }
 
     return (
         <div className='col-lg-6 col-sm-12'>
@@ -162,5 +172,4 @@ function Gallery() {
     </>
   );
 }
-  
 export default Gallery;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function Navbar({auto_set_theme, page_name, theme_string}) {
     const [pageName, setPageName] = useState(page_name);
@@ -167,5 +168,11 @@ function Navbar({auto_set_theme, page_name, theme_string}) {
       </>
     );
   }
+
+  Navbar.propTypes = {
+    auto_set_theme: PropTypes.func.isRequired,
+    page_name: PropTypes.string.isRequired,
+    theme_string: PropTypes.string.isRequired
+  };
 
 export default Navbar;

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-function Navbar(props) {
-    const [pageName, setPageName] = useState(props.page_name);
+function Navbar({auto_set_theme, page_name, theme_string}) {
+    const [pageName, setPageName] = useState(page_name);
     const navigate = useNavigate();
-    const [themeString, setThemeString] = useState(props.theme_string);
+    const [themeString, setThemeString] = useState(theme_string);
     // const presentPageRef = useRef(null);
     const default_value = { className: 'nav-link', 'data-bs-toggle': 'collapse', 'data-bs-target': '.navbar-collapse.show'};
     let linkAttributes = {
@@ -82,7 +82,7 @@ function Navbar(props) {
     function switchTheme() {
       if (themeString === "auto") {
         setThemeString('dark')
-        props.auto_set_theme();
+        auto_set_theme();
         localStorage.setItem("themeString", "dark");
       } else if(themeString === "dark") {
         setThemeString('light')
@@ -103,7 +103,7 @@ function Navbar(props) {
       );
     }
 
-    props.auto_set_theme();
+    auto_set_theme();
     
     // if (presentPageRef === "Gallery") {
     //   goGallery();

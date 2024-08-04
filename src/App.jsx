@@ -1,8 +1,5 @@
-import React from 'react';
 import './App.css';
-import Main from './pages/Main.jsx';
 import Navbar from './Navbar';
-import { useState } from 'react';
 import initFakeDatabase from './fakeDatabase';
 import { Outlet } from "react-router-dom";
 
@@ -12,8 +9,6 @@ function App() {
     localStorage.setItem("themeString", "auto");
   }
   const themeStringFromStorage = localStorage.getItem("themeString");
-
-  const [page, setPage] = useState(<Main />);
 
   function setTheme(themeString) {
     document.querySelector("html").setAttribute('data-bs-theme', themeString);
@@ -39,7 +34,7 @@ function App() {
 
   return (
     <>
-      <Navbar page_name="main" set_page={setPage} theme_string={themeStringFromStorage} auto_set_theme={autoSetTheme} />
+      <Navbar page_name="main" theme_string={themeStringFromStorage} auto_set_theme={autoSetTheme} />
       <div className="container-fluid limit-and-center">
         <Outlet />
       </div>

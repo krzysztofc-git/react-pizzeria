@@ -1,4 +1,3 @@
-import React from 'react';
 import { getFakeDatabaseTable } from '../fakeDatabase';
 function Gallery() {
   function GalleryCarousel() {

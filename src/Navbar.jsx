@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { ThemeContext } from './contexts/ThemeContext';
 
-function Navbar({auto_set_theme, page_name, theme_string}) {
+function Navbar({page_name}) {
   const [pageName, setPageName] = useState(page_name);
   const navigate = useNavigate();
-  const [themeString, setThemeString] = useState(theme_string);
+  // const [themeString, setThemeString] = useState(theme_string);
+  const { theme, setTheme } = useContext(ThemeContext);
   // const presentPageRef = useRef(null);
   const default_value = { className: 'nav-link', 'data-bs-toggle': 'collapse', 'data-bs-target': '.navbar-collapse.show'};
   let linkAttributes = {
@@ -68,9 +70,9 @@ function Navbar({auto_set_theme, page_name, theme_string}) {
   function SwitchThemeButtonIcon() {
     let icon;
 
-    icon = themeString === "dark"
+    icon = theme === "dark"
     ? (<><i className="bi bi-moon-stars-fill" /></>)
-    : themeString === "light"
+    : theme === "light"
     ? (<><i className="bi bi-sun-fill" /></>)
     : (<><i className="bi bi-circle-half" /></>);
 
@@ -81,16 +83,16 @@ function Navbar({auto_set_theme, page_name, theme_string}) {
     );
   }
   function switchTheme() {
-    if (themeString === "auto") {
-      setThemeString('dark')
-      auto_set_theme();
-      localStorage.setItem("themeString", "dark");
-    } else if(themeString === "dark") {
-      setThemeString('light')
-      localStorage.setItem("themeString", "light");
+    if (theme === "auto") {
+      setTheme('dark')
+      // auto_set_theme();
+      // localStorage.setItem("themeString", "dark");
+    } else if(theme === "dark") {
+      setTheme('light')
+      // localStorage.setItem("themeString", "light");
     } else {
-      setThemeString('auto');
-      localStorage.setItem("themeString", "auto");
+      setTheme('auto');
+      // localStorage.setItem("themeString", "auto");
     }
   }
 
@@ -104,7 +106,7 @@ function Navbar({auto_set_theme, page_name, theme_string}) {
     );
   }
 
-  auto_set_theme();
+  // auto_set_theme();
 
   // if (presentPageRef === "Gallery") {
   //   goGallery();
